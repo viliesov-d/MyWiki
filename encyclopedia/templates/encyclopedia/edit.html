@@ -1,0 +1,26 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia - Edit entry: {{ form.title }}
+{% endblock %}
+
+{% block body %}
+    <h1>Edit Entry: {{ title }}</h1>
+
+    <form action="{% url 'edit' %}" method="post">
+        {% csrf_token %}
+        <div>
+        {% for field in form %}
+            <div>
+                {% if field.name == 'content' %}
+                    <div>{{ field.label }}</div>
+                {% endif %}
+                <div>{{ field }}</div>
+            </div>
+        {% endfor %}
+            <div colspan="2"><input type="submit"></div>
+        </div>
+    </form>
+
+    <a href="{% url 'index' %}">Home</a>
+{% endblock %}

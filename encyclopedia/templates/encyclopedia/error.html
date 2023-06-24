@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia: Error
+{% endblock %}
+
+{% block body %}
+	
+    <h1>Error</h1>
+
+    {% if e_src == "edit" %}
+
+    <div>There is no entry named {{ e_title }}.</div>
+
+    <div>You can <a href="{% url 'add' e_title %}">create a {{ e_title }} entry</a> or go to the <a href="/">Home page</a>.</div>
+
+
+   	{% elif e_src == "add" %}
+   	<div>There is an entry named {{ e_title }}.</div>
+
+    <div>You can <a href="{% url 'edit' e_title %}">edit a {{ e_title }} entry</a> or go to the <a href="/">Home page</a>.</div>
+    {% endif %}
+
+{% endblock %}
